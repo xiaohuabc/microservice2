@@ -14,8 +14,9 @@ spring:
           uri: git@github.com:xiaohuabc/microservice2.git
           search-paths:
             - config-server/src/main/resources/service-config
-      label: dev #指定启用的分支，如果请求路径，不选定分支，默认就是这里指定的
-      #如：http://localhost:3344/master/provider-dev.yml 里面/master可以不写
+          default-label: dev #这个是服务端配置，如果请求配置的路径中不写分支，默认这里指定。
+            #（如：http://localhost:3344/master/provider-master.yml 里面master可以不写）
+#      label: dev #这个配置应该是客户端，指定配置中心服务端的分支
 
 
 #  cloud:
