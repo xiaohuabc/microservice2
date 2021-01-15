@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 3344
 
 spring:
   application:
@@ -11,7 +11,10 @@ spring:
     config:
       server:
         git:
-          uri:
+          uri: git@github.com:xiaohuabc/microservice2.git
+          search-paths:
+            - config-server
+      label: master
 
 
 #  cloud:
