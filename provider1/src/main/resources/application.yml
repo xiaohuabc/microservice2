@@ -1,0 +1,65 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: provider
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis01?useUnicode=true&characterEncoding=UTF-8&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    druid:
+      initial-size: 20
+      max-active: 100
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.xiaohu.model
+  global-config:
+    db-config:
+      table-prefix:
+      id-type: auto
+  configuration:
+  # 是否将sql打印到控制面板(该配置会将sql语句和查询的结果都打印到控制台)
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #不启用日志
+#    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+#actuator配置
+
+#配置actuator的info信息
+#访问方式：/actuator/info
+#{"name":"hh","version":91}
+info:
+  name: provider1
+  version: 1.0
+
+#{"timestamp":"2021-01-10T08:01:11.012+0000","status":404,"error":"Not Found","message":"No message available","path":"/actuator/info"}
+#info:
+#  app:
+#    name: spring-boot-actuator
+#    version: 1.0.0
+
+management:
+#  server:
+#    port: 18081 #配置actuator的端口号，默认和应用公用一个端口
+  endpoint:
+    health:
+      show-details: always #启用health端点详细信息，就能看到MyHealth自定义的健康信息
+#  endpoints:
+#    web:
+#      base-path: /check #修改actuator访问path
+
+eureka:
+  client:
+    #是否将自己注册进eureka-server。默认true
+    register-with-eureka: true
+    #是否从eureka-server抓取已有的注册信息，默认为true，单节点无所谓。集群使用Ribbon负载均衡需要设为true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: provider1 #指定在eureka服务器上的实例名称
+    prefer-ip-address: true #访问路径，可以显示ip地址

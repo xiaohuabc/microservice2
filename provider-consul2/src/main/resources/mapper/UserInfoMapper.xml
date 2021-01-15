@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaohu.provider.mapper.UserInfoMapper">
+
+    <select id="getList" resultType="UserInfo">
+        select * from user_info
+    </select>
+
+    <!--向user_info表，写入一条记录-->
+    <insert id="create" parameterType="UserInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into user_info(user_id,user_name,age,money,ctime)
+        values(#{userId},#{userName},#{age},#{money},null)
+    </insert>
+</mapper>

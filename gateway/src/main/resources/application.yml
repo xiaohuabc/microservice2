@@ -1,0 +1,54 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+        client-ip: localhost
+    gateway:
+      routes:
+        - id: provider1
+          uri: http://localhost:8001
+          predicates:
+            - Path=/provider/getPort
+        - id: provider2
+          uri: http://localhost:8002
+          predicates:
+            - Path=/provider/getMessage
+
+
+#Feign也是通过ribbon实现负载均衡。配置ribbon设置连接超时时间和读取超时时间
+ribbon:
+  ReadTimeout:  5000
+  ConnectTimeout: 2000
+#定制服务日志级别（打印出Feign调用详细日志）（配合FeignLoggerConfig使用）
+#logging:
+#  level:
+#    #    root: info
+#    root: debug
+    #    com.xiaohu.consumer.service.MyFirstFeignService: debug
+#    com.xiaohu.consumer.service: debug
+
+
+#actuator配置
+
+#配置actuator的info信息
+#访问方式：/actuator/info
+#{"name":"hh","version":91}
+info:
+  name: provider1
+  version: 1.0
+
+management:
+  endpoint:
+    health:
+      show-details: always #启用health端点详细信息，就能看到MyHealth自定义的健康信息
+

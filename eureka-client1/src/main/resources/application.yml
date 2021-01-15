@@ -1,0 +1,20 @@
+server:
+  port: 1001
+
+#{"name":"hh","version":91}
+info:
+  name: hh
+  version: 91
+
+eureka:
+  client:
+    #是否将自己注册进eureka-server。默认true
+    register-with-eureka: true
+    #是否从eureka-server抓取已有的注册信息，默认为true，单节点无所谓。集群使用Ribbon负载均衡需要设为true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+
+spring:
+  application:
+    name: eureka-client1
