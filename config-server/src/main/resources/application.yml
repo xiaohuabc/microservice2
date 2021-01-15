@@ -13,7 +13,7 @@ spring:
         git:
           uri: git@github.com:xiaohuabc/microservice2.git
           search-paths:
-            - config-server/src/main/resources
+            - config-server/src/main/resources/service-config
       label: master
 
 
