@@ -1,0 +1,27 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    config:
+      server:
+        git:
+          uri:
+
+
+#  cloud:
+#    config:
+#      server:
+#        git:
+#            uri:  填写你自己的github路径
+#          search-paths:
+#              - springcloud-config
+#        label: master
+info:
+  name: provider1
+  version: 1.0
