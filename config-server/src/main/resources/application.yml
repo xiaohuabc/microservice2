@@ -3,30 +3,21 @@ server:
 
 spring:
   application:
-    name: provider
+    name: config-server
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: localhost:8848 #服务注册进nacos
     config:
       server:
         git:
-          uri: git@github.com:xiaohuabc/microservice2.git
+          uri: git@github.com:xiaohuabc/microservice2.git #git项目地址
           search-paths:
-            - config-server/src/main/resources/service-config
-          default-label: dev #这个是服务端配置，如果请求配置的路径中不写分支，默认这里指定。
+            - config-server/src/main/resources/service-config #项目下，配置文件所在目录地址
+          default-label: master #这个是服务端配置，如果请求配置的路径中不写分支，默认这里指定。
             #（如：http://localhost:3344/master/provider-master.yml 里面master可以不写）
-#      label: dev #这个配置应该是客户端，指定配置中心服务端的分支
+#      label: master #这个配置应该是客户端，指定配置中心服务端的分支
 
-
-#  cloud:
-#    config:
-#      server:
-#        git:
-#            uri:  填写你自己的github路径
-#          search-paths:
-#              - springcloud-config
-#        label: master
 info:
-  name: provider1
+  name: config-server
   version: 1.0

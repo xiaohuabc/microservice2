@@ -1,0 +1,13 @@
+server:
+  port: 3366
+
+info:
+  name: config-server
+  version: 1.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+#        include: "*"
+        include: "refresh"

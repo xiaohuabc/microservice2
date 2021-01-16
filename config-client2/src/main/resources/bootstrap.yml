@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: master #这个配置应该是客户端，指定配置中心服务端的分支
+      name: provider
+      profile: master
+      uri: http://localhost:3344
+      #从注册中心去寻找服务名字是 config-server的地址
+#      discovery:
+#        enabled: true
+#        service-id: config-server
+info:
+  name: config-server
+  version: 1.1
