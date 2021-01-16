@@ -10,8 +10,6 @@ spring:
       name: provider
       profile: prod
       uri: http://localhost:3344
-
-#      aa: ${spring.cloud.config.discovery}
       #从注册中心去寻找服务名字是 config-server的地址（这个是尝试失败了，原因未知，项目没跑起来）
 #      discovery:
 #        enabled: true
