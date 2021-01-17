@@ -39,6 +39,8 @@
         <module>config-server</module>
         <module>config-client</module>
         <module>config-client2</module>
+        <module>config-client-bus1</module>
+        <module>config-client-bus2</module>
     </modules>
     <!--指定spring-boot版本信息-->
     <!--

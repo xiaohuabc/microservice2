@@ -1,0 +1,35 @@
+server:
+  port: 3355
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #服务注册进nacos
+    config:
+      label: master #这个配置应该是客户端，指定配置中心服务端的分支
+      name: provider
+      profile: prod
+      uri: http://localhost:3344
+      #从注册中心去寻找服务名字是 config-server的地址（这个是尝试失败了，原因未知，项目没跑起来）
+#      discovery:
+#        enabled: true
+#        service-id: config-server
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+info:
+  name: config-server
+  version: 1.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        #        include: "*"
+        include: "refresh"

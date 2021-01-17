@@ -17,6 +17,18 @@ spring:
           default-label: master #这个是服务端配置，如果请求配置的路径中不写分支，默认这里指定。
             #（如：http://localhost:3344/master/provider-master.yml 里面master可以不写）
 #      label: master #这个配置应该是客户端，指定配置中心服务端的分支
+# rabbitmq配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh" #开启bus总线刷新端点
 
 info:
   name: config-server
