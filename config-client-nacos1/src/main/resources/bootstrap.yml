@@ -1,0 +1,18 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: nacos-config
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #服务注册进nacos
+#        server-addr: http://192.168.1.131:8848 #服务注册进搭建的nacos集群
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yaml
+
+info:
+  name: nacos-config1
+  version: 1.0

@@ -1,0 +1,31 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: stream-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #服务注册进nacos
+    stream:
+      binders: #在此处配置要绑定的RabbitMQ的服务信息
+        streamProviderMQ: #标识定义的名称，用于bindings整合
+          type: rabbit #消息组件类型
+          environment: #设置rabbitmq的相关环境配置
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+      bindings: #服务的整合处理
+        output: #这个名字是一个通道的名称
+          destination: studyExchange #表示要使用的Exchange的名称
+          content-type: application/json #设置的消息类型，本次为json。文本可设置为“text/plain”
+          binder: streamProviderMQ #设置要绑定的消息服务的具体设置
+
+
+info:
+  name: stream-provider
+  version: 1.0

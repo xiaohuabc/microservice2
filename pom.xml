@@ -41,6 +41,12 @@
         <module>config-client2</module>
         <module>config-client-bus1</module>
         <module>config-client-bus2</module>
+        <module>consumer-stream-rabbitmq1</module>
+        <module>consumer-stream-rabbitmq2</module>
+        <module>provider-stream-rabbitmq1</module>
+        <module>provider-stream-rabbitmq2</module>
+        <module>config-client-nacos1</module>
+        <module>config-client-nacos2</module>
     </modules>
     <!--指定spring-boot版本信息-->
     <!--
@@ -90,6 +96,8 @@
         <nacos-client.version>2.2.2.RELEASE</nacos-client.version>
         <!--<openfeign.version>3.0.0</openfeign.version>-->
         <openfeign.version>2.2.2.RELEASE</openfeign.version>
+        <stream-rabbit.version>3.0.4.RELEASE</stream-rabbit.version>
+
 
         <!--<spring-boot-test.version>2.4.0</spring-boot-test.version>-->
         <spring-boot-dependencies.version>2.2.2.RELEASE</spring-boot-dependencies.version>
@@ -379,6 +387,12 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-gateway</artifactId>
                 <version>${gateway.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+                <version>${stream-rabbit.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

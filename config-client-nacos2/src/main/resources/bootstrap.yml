@@ -1,0 +1,23 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: nacos-config
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #服务注册进nacos
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yaml
+        group: config
+        namespace: 531ae315-2ef8-43b7-97ef-9d201dc0e131
+
+
+
+info:
+  name: nacos-config2
+  version: 1.0
