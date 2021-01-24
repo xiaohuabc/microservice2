@@ -7,7 +7,6 @@
     <modules>
         <module>provider1</module>
         <module>provider2</module>
-        <module>common</module>
         <module>eureka-server1</module>
         <module>eureka-client1</module>
         <module>consumer1</module>
@@ -47,6 +46,10 @@
         <module>provider-stream-rabbitmq2</module>
         <module>config-client-nacos1</module>
         <module>config-client-nacos2</module>
+        <module>orders</module>
+        <module>stock</module>
+        <module>account</module>
+        <module>common</module>
     </modules>
     <!--指定spring-boot版本信息-->
     <!--
@@ -97,6 +100,7 @@
         <!--<openfeign.version>3.0.0</openfeign.version>-->
         <openfeign.version>2.2.2.RELEASE</openfeign.version>
         <stream-rabbit.version>3.0.4.RELEASE</stream-rabbit.version>
+        <seata.version>2.2.2.RELEASE</seata.version>
 
 
         <!--<spring-boot-test.version>2.4.0</spring-boot-test.version>-->
@@ -393,6 +397,12 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
                 <version>${stream-rabbit.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+                <version>${seata.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

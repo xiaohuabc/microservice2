@@ -1,0 +1,48 @@
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.xiaohu.model.account
+  global-config:
+    db-config:
+      table-prefix:
+      id-type: auto
+  configuration:
+  # 是否将sql打印到控制面板(该配置会将sql语句和查询的结果都打印到控制台)
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #不启用日志
+#    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+#actuator配置
+
+#配置actuator的info信息
+#访问方式：/actuator/info
+#{"name":"hh","version":91}${spring.application.name}
+info:
+  name: account
+  version: 1.0
+
+management:
+  endpoint:
+    health:
+      show-details: always #启用health端点详细信息，就能看到MyHealth自定义的健康信息
+
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: my_test_tx_group
+  config:
+    type: nacos
+    nacos:
+      namespace:
+      serverAddr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      username: "nacos"
+      password: "nacos"
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      namespace:
+      username: "nacos"
+      password: "nacos"
