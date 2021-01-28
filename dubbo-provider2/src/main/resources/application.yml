@@ -1,0 +1,44 @@
+server:
+  port: 8002
+
+spring:
+  main:
+    allow-bean-definition-overriding: true #在Spring Boot 2.1 以及更高的版本增加该设定，因为 Spring Boot 默认调整了 Bean 定义覆盖行为。
+  application:
+    name: provider
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis01?useUnicode=true&characterEncoding=UTF-8&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    druid:
+      initial-size: 20
+      max-active: 100
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+dubbo:
+  scan:
+    base-packages: com.xiaohu.dubbo.service.dubbo
+  #    base-packages: com.xiaohu.dubbo.service.dubbo #dubbo服务实现类扫描基准包
+  protocol:
+    name: dubbo #dubbo服务暴露的协议
+    port: -1 #协议端口（-1 表示自增端口，从 20880 开始）
+  registry:
+    address: spring-cloud://localhost #Dubbo 服务注册中心配置，指定挂载到 Spring Cloud 注册中心
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.xiaohu.model
+  global-config:
+    db-config:
+      table-prefix:
+      id-type: auto
+  configuration:
+    # 是否将sql打印到控制面板(该配置会将sql语句和查询的结果都打印到控制台)
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #不启用日志
+#    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl

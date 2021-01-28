@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>common</module>
         <module>provider1</module>
         <module>provider2</module>
         <module>eureka-server1</module>
@@ -49,7 +50,10 @@
         <module>orders</module>
         <module>stock</module>
         <module>account</module>
-        <module>common</module>
+        <module>dubbo-provider1</module>
+        <module>dubbo-provider2</module>
+        <module>dubbo-consumer1</module>
+        <module>dubbo-api</module>
     </modules>
     <!--指定spring-boot版本信息-->
     <!--
@@ -72,7 +76,8 @@
     <!--父pom指定版本号-->
     <properties>
 
-        <xiaohu.common.version>0.0.1-SNAPSHOT</xiaohu.common.version>
+        <common.version>0.0.1-SNAPSHOT</common.version>
+        <dubbo-api.version>0.0.1-SNAPSHOT</dubbo-api.version>
 
         <!--<java.version>1.8</java.version>-->
 
@@ -101,6 +106,8 @@
         <openfeign.version>2.2.2.RELEASE</openfeign.version>
         <stream-rabbit.version>3.0.4.RELEASE</stream-rabbit.version>
         <seata.version>2.2.2.RELEASE</seata.version>
+        <!--<dubbo.version>2.2.4.RELEASE</dubbo.version>-->
+        <dubbo.version>2.2.2.RELEASE</dubbo.version>
 
 
         <!--<spring-boot-test.version>2.4.0</spring-boot-test.version>-->
@@ -213,18 +220,13 @@
             <!--依赖项目其他模块-->
             <dependency>
                 <groupId>com.xiaohu</groupId>
-                <artifactId>model</artifactId>
-                <version>${xiaohu.model.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.xiaohu</groupId>
                 <artifactId>common</artifactId>
-                <version>${xiaohu.common.version}</version>
+                <version>${common.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.xiaohu</groupId>
-                <artifactId>utils</artifactId>
-                <version>${xiaohu.utils.version}</version>
+                <artifactId>dubbo-api</artifactId>
+                <version>${dubbo-api.version}</version>
             </dependency>
 
             <!--
@@ -347,11 +349,11 @@
             </dependency>
 
             <!--openfeign客户端-->
-            <dependency>
+            <!--<dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
                 <version>${openfeign.version}</version>
-            </dependency>
+            </dependency>-->
 
             <!--hystrix服务高可用-->
             <dependency>
@@ -404,6 +406,13 @@
                 <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
                 <version>${seata.version}</version>
             </dependency>
+
+            <!--版本由spring-cloud-alibaba-dependencies决定-->
+            <!--<dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
