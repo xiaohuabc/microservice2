@@ -29,6 +29,13 @@ import java.util.List;
 @RestControllerAdvice
 public class GlobalException {
 
+    @ExceptionHandler(ArithmeticException.class)
+    ResponseObjectResult handleMyException(ArithmeticException e){
+        log.error("[ArithmeticException]=======>>>:算术异常：{}",e.getMessage(),e);
+
+        return ResponseObjectResult.responseFail();
+    }
+
     @ExceptionHandler(MyException.class)
     ResponseObjectResult handleMyException(MyException e){
         log.error("[MyException]=======>>>:执行异常：{}",e.getMsg(),e);

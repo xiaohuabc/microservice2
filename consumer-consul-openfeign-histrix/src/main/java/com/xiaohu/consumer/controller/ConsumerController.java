@@ -55,9 +55,9 @@ public class ConsumerController {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "1500")
     })
     @GetMapping("/mySelfFallback")
-    public String mySelfFallback(){
+    public String mySelfFallback() throws InterruptedException {
         System.out.println("privider1 timeout执行");
-        try {TimeUnit.SECONDS.sleep(2);} catch (InterruptedException e) {e.printStackTrace();}
+        try {TimeUnit.SECONDS.sleep(2);} catch (InterruptedException e) {e.printStackTrace(); throw e;}
 
         return "HandleSuccess" + port;
     }
@@ -68,7 +68,7 @@ public class ConsumerController {
      * @Description @HystrixCommand注解fallbackMethod指定的兜底方法
      * @Return
      **/
-    private String mySelfFallbackHandler(){
+    public String mySelfFallbackHandler(){
         return "消费者兜底方法" + port;
     }
 

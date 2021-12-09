@@ -54,6 +54,9 @@
         <module>dubbo-provider2</module>
         <module>dubbo-consumer1</module>
         <module>dubbo-api</module>
+        <module>mq-rabbit-provider1</module>
+        <module>mq-rabbit-consumer1</module>
+        <module>exception-handler</module>
     </modules>
     <!--指定spring-boot版本信息-->
     <!--
